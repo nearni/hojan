@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>雨傘風格精品館</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f0f8ff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: linear-gradient(to right, #87cefa, #4682b4);
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav {
+      margin-top: 0.5rem;
+    }
+
+    .nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: url('umbrella-bg.jpg') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .products {
+      padding: 2rem;
+      background-color: #fff;
+    }
+
+    .products h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .product {
+      background: #fdfdfd;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .product h3 {
+      margin: 0.5rem 0;
+    }
+
+    .product button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #4682b4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #315f7d;
+    }
+
+    .cart, .support {
+      padding: 2rem;
+      background-color: #f0f8ff;
+    }
+
+    .cart h2, .support h2 {
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      background-color: #4682b4;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">雨傘風格精品館</h1>
+    <nav class="nav">
+      <a href="#products">商品展示</a>
+      <a href="#cart">購物車</a>
+      <a href="#support">售後服務</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <h2>多元時尚，盡在雨傘風格</h2>
+      <p>衣著、鞋帽、眼鏡、服飾品一站式選購</p>
+    </section>
+
+    <section id="products" class="products">
+      <h2>商品展示</h2>
+      <div class="product-grid">
+        <div class="product">
+          <img src="umbrella1.jpg" alt="彩虹雨傘" />
+          <h3>彩虹雨傘</h3>
+          <p>NT$450</p>
+          <button>加入購物車</button>
+        </div>
+        <div class="product">
+          <img src="sunglasses.jpg" alt="時尚太陽眼鏡" />
+          <h3>時尚太陽眼鏡</h3>
+          <p>NT$880</p>
+          <button>加入購物車</button>
+        </div>
+        <!-- 更多商品可依此格式新增 -->
+      </div>
+    </section>
+
+    <section id="cart" class="cart">
+      <h2>購物車</h2>
+      <p>您的購物車目前是空的。</p>
+    </section>
+
+    <section id="support" class="support">
+      <h2>售後服務</h2>
+      <p>有任何問題歡迎聯繫我們的客服中心，我們提供七天鑑賞期及退換貨服務。</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 泓將興業有限公司| 60682671</p>
+  </footer>
+
+  <script>
+    const cartItems = [];
+
+    document.querySelectorAll(".product button").forEach((button, index) => {
+      button.addEventListener("click", () => {
+        const product = button.closest(".product");
+        const name = product.querySelector("h3").innerText;
+        const price = product.querySelector("p").innerText;
+
+        cartItems.push({ name, price });
+        updateCart();
+      });
+    });
+
+    function updateCart() {
+      const cartSection = document.querySelector("#cart");
+      const cartList = document.createElement("ul");
+      cartList.style.marginTop = "1rem";
+
+      cartList.innerHTML = cartItems
+        .map(item => `<li>${item.name} - ${item.price}</li>`)
+        .join("");
+
+      cartSection.innerHTML = `
+        <h2>購物車</h2>
+        ${cartItems.length === 0 ? "<p>您的購物車目前是空的。</p>" : ""}
+      `;
+      if (cartItems.length > 0) cartSection.appendChild(cartList);
+    }
+  </script>
+</body>
+</html>
 
