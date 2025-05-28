@@ -12,11 +12,11 @@
     }
 
     body {
-  background: linear-gradient(to bottom right, #e0f7ff, #cce7f5);
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill-opacity=\"0.1\"><text x=\"0\" y=\"70\" font-size=\"90\">☂️</text></svg>');
-  background-repeat: repeat;
-}
-
+      font-family: "Segoe UI", sans-serif;
+      background: #f0f8ff;
+      color: #333;
+      line-height: 1.6;
+    }
 
     .header {
       background: linear-gradient(to right, #87cefa, #4682b4);
@@ -46,15 +46,21 @@
     }
 
     .hero {
-      background: url('umbrella-bg.jpg') no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1607006341607-46952e3dfed6?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
       color: white;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
+      backdrop-filter: brightness(0.8);
     }
 
     .hero h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
     }
 
     .products {
@@ -137,7 +143,7 @@
 </head>
 <body>
   <header class="header">
-    <h1 class="logo">雨傘風格精品館</h1>
+    <h1 class="logo">泓將興業</h1>
     <nav class="nav">
       <a href="#products">商品展示</a>
       <a href="#cart">購物車</a>
@@ -147,21 +153,21 @@
 
   <main>
     <section id="hero" class="hero">
-      <h2>多元時尚，盡在雨傘風格</h2>
-      <p>衣著、鞋帽、眼鏡、服飾品一站式選購</p>
+      <h2>風雨同行，風格不退色</h2>
+      <p>時尚雨具 x 流行眼鏡 x 精品配件</p>
     </section>
 
     <section id="products" class="products">
       <h2>商品展示</h2>
       <div class="product-grid">
         <div class="product">
-          <img src="umbrella1.jpg" alt="彩虹雨傘" />
+          <img src="https://images.unsplash.com/photo-1596367400303-5dc01f4c6563?auto=format&fit=crop&w=600&q=80" alt="彩虹雨傘" />
           <h3>彩虹雨傘</h3>
           <p>NT$450</p>
           <button>加入購物車</button>
         </div>
         <div class="product">
-          <img src="sunglasses.jpg" alt="時尚太陽眼鏡" />
+          <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=600&q=80" alt="時尚太陽眼鏡" />
           <h3>時尚太陽眼鏡</h3>
           <p>NT$880</p>
           <button>加入購物車</button>
@@ -177,18 +183,18 @@
 
     <section id="support" class="support">
       <h2>售後服務</h2>
-      <p>有任何問題歡迎聯繫我們的客服中心，我們提供七天鑑賞期及退換貨服務。</p>
+      <p>我們提供七天鑑賞期、商品保固與即時客服服務。</p>
     </section>
   </main>
 
   <footer class="footer">
-    <p>&copy; 2025 泓將興業有限公司| 60682671</p>
+    <p>&copy; 2025 泓將興業有限公司 | 風格，在每一場雨中綻放 | 60682671</p>
   </footer>
 
   <script>
     const cartItems = [];
 
-    document.querySelectorAll(".product button").forEach((button, index) => {
+    document.querySelectorAll(".product button").forEach((button) => {
       button.addEventListener("click", () => {
         const product = button.closest(".product");
         const name = product.querySelector("h3").innerText;
@@ -217,4 +223,3 @@
   </script>
 </body>
 </html>
-
